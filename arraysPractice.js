@@ -76,27 +76,49 @@ var numbersArray = [1,2,34,54,55,34,32,11,19,17,54,66,13];
 //Have divider return an Array with the first item in the array being the evens array (all the even values from nums) and the second item in the Array being the odds array(all the odd values from nums).
 
 
-function divider(numbersArray) {
 
+function divider(arr) {   //<--- I messed this up because I put the variables globally and fixed it by making them locally.
+    var evenArray = [];
+    var oddArray = [];
+    var bothArray = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) {
+
+            evenArray.push(arr[i]);
+        }
+        else {
+            oddArray.push(arr[i]);
+        }
+    }
+    bothArray.unshift(evenArray);
+    bothArray.push(oddArray);
+    console.log(bothArray);
+    return bothArray;
 }
 
 
-
-
-//Next Problem
+//Next Problem ------------------------------------------------------------
 
 
 var getRandomArbitrary = function() {
   return Math.floor(Math.random() * (30 - 0) + 0);
 };
 // var numbers = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
-//Above you're given a function that will return a random number between 0 and 30.  There is also a commented out array full of numbers to help you visualize what your function will be receiving.
+//Above you're given a function that will return a random number between 0 and 30.  There is also a commented out array
+// full of numbers to help you visualize what your function will be receiving.
 
-// Your job is to write a function named finder that will get a random number (by invoking getRandomArbitrary), then loop through the array (that will be passed in as a parameter) to see if that random number is in the array. If it is, return true, if it's not, return false
+// Your job is to write a function named finder that will get a random number (by invoking getRandomArbitrary), then loop
+// through the array (that will be passed in as a parameter) to see if that random number is in the array. If it is, return true, if it's not, return false
 
-  //Code Here
-
-  //Code Here
+function finder(arr) {
+    var random = getRandomArbitrary();
+    if(arr.indexOf(random) === -1) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
 
 
 //Next problem
@@ -106,7 +128,10 @@ var getRandomArbitrary = function() {
 var str = 'this is my sentence';
 //Write a function called reverse that takes a given str as it's only argument and returns that string after it's been reversed
 
-  //Code Here
+ function reverse(str) {
+     return str.split('').reverse().join('');
+
+ }
 
 
 //Next Problem
@@ -125,23 +150,55 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   and the second is an item to add to your grocery list. In addItem add the item you passed in to
   myGroceryList then return the new, updated grocery list.
 
-  In both the removeItem function and the addItem function, you will also need to check for valid aurguments. Specrunner will try to call your functions without passing in valid aurguments. When this happens, you will need to respond by returning an empty array.
+  In both the removeItem function and the addItem function, you will also need to check for valid aurguments. Specrunner
+  will try to call your functions without passing in valid aurguments. When this happens, you will need to respond by
+  returning an empty array.
 */
 
-  //Code Here
+  function removeItem(myGroceryList, removeItem) {
+      var empty = [];
+      if (removeItem === undefined) {
+            return empty;
+        }
+
+      for(var i = 0; i < myGroceryList.length; i++) {
+          if(myGroceryList[i] === removeItem) {
+              myGroceryList.splice(myGroceryList[i], 1);
+              return myGroceryList;
+          }
+      }
+    return myGroceryList;
+  }
+
+
 
 //removeItem(myGroceryList, 'chips') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 //addItem(myGroceryList, 'Jerky') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];
 
 
 
-//Next Problem
+function addItem(myGroceryList, addItem) {
+    var empty1 = [];
+    if(addItem === undefined) {
+        return empty1
+    }
+    myGroceryList.push(addItem);
+    return myGroceryList;
+
+}
 
 
 
 //Write a function called maker that creates an array, fills that array with numbers from 1 to 215, then returns the array.
 
-  //Code Here
+  function maker() {
+      var myArray = [];
+
+      for(var i = 1; i <= 215; i++) {
+          myArray.push(i);
+      }
+      return myArray;
+  }
 
 
 
@@ -152,7 +209,15 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
 //Write a function called addTen that is given 'numbers' as it's only argument and returns a new
 //array after adding ten to each item in numbers. *Verify your answer is correct. --> [15, 19, 26, 29, 35, 44, 58]
 
-  //Code Here
+// multiply(each index by 1 );
+
+ function addTen(numbers) {
+     var newArray = [];
+     for (var i = 0; i < numbers.length; i++) {
+         newArray.push((numbers[i] * 1) + 10 );
+     }
+     return newArray;
+ }
 
 
 
@@ -173,7 +238,14 @@ for(var i = 0; i < num2; i++){
 //Above is some code that adds a random number of values to both arr1 and arr2.
 //Write a function called 'longer' that is given arr1 and arr2 as it's only arguments. Return the array which is longest.
 
-  //Code Here
+ function longer(arr1, arr2) {
+     if(arr1.length > arr2.length) {
+         return arr1;
+     }
+     else {
+         return arr2;
+     }
+ }
 
 
 /*As a continuation of the previous problem, write another function called 'both'.
@@ -182,7 +254,31 @@ for(var i = 0; i < num2; i++){
   Example: var arr1 = [1,2,3,4]; var arr2 = [2,4,5,6]; newArray // [2,4]
 */
 
-  //Code Here
+  function both(arr1, arr2) {
+      var matchArr = [];
+      for(var i = 0; i < arr1.length; i++) {
+          for(var j = 1; j < arr2.length; j++)
+          if (arr2[i] === arr1[i] ) {
+              matchArr.push(i);
+          }
+      }
+    return matchArr;
+  }
+
+// function both(arr1, arr2) {
+//     var matchArr = [];
+//
+//     if(arr1.indexOf(arr2[j]) === -1) {
+//         matchArr.push(arr2[j]);
+//     }
+//     else if(arr2.indexOf(arr1[i]) === -1) {
+//         matchArr.push(arr1[i]);
+//     }
+//     return matchArr;
+//  }
+
+   
+
 
 
 
