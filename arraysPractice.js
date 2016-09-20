@@ -264,6 +264,8 @@ for(var i = 0; i < num2; i++){
       }
     return matchArr;
   }
+  console.log(both(arr1, arr2));
+
 
 // function both(arr1, arr2) {
 //     var matchArr = [];
