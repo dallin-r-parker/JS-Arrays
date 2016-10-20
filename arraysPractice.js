@@ -254,33 +254,43 @@ for(var i = 0; i < num2; i++){
   Example: var arr1 = [1,2,3,4]; var arr2 = [2,4,5,6]; newArray // [2,4]
 */
 
-  function both(arr1, arr2) {
-      var matchArr = [];
-      for(var i = 0; i < arr1.length; i++) {
-          for(var j = 1; j < arr2.length; j++)
-          if (arr2[i] === arr1[i] ) {
-              matchArr.push(i);
-          }
-      }
+var arr1 = [1,2,3,4]; var arr2 = [2,4,5,6];
+
+function both(arr1, arr2) {
+    var matchArr = [];
+    for(var i = 0; i < arr1.length; i++) {
+        for(var j = 0; j < arr2.length; j++)
+            if (arr2[j] === arr1[i] ) {
+                matchArr.push(arr1[i]);
+            }
+    }
     return matchArr;
-  }
-  console.log(both(arr1, arr2));
+}
 
 
+//
+//
+//
+// // function both(arr1, arr2) {
+// //     var matchArr = [];
+// //
+// //     if(arr1.indexOf(arr2[j]) === -1) {
+// //         matchArr.push(arr2[j]);
+// //     }
+// //     else if(arr2.indexOf(arr1[i]) === -1) {
+// //         matchArr.push(arr1[i]);
+// //     }
+// //     return matchArr;
+// //  }
+//
+//    
 // function both(arr1, arr2) {
 //     var matchArr = [];
 //
-//     if(arr1.indexOf(arr2[j]) === -1) {
-//         matchArr.push(arr2[j]);
+//     for(var i = 0; i < arr1.length; i++ ) {
+//         if()
 //     }
-//     else if(arr2.indexOf(arr1[i]) === -1) {
-//         matchArr.push(arr1[i]);
-//     }
-//     return matchArr;
-//  }
-
-   
-
+// }
 
 
 
@@ -320,15 +330,27 @@ var colt = {
 array with those four objects. After that console.log the length of the Array and make
 sure that it's equal to 4. */
 
-  //Code Here
+devMountainEmployees.push(tyler);
+devMountainEmployees.push(cahlan)
+devMountainEmployees.push(ryan)
+devMountainEmployees.push(colt);
+console.log(devMountainEmployees);
 
 /*Now let's say Cahlan has a mental breakdown and has to take a leave of absence to 'find himself'.
 Loop through your devMountainEmployees until you find cahlan, then remove him from the array.*/
 
-  //Code Here
+// devMountainEmployees.splice(devMountainEmployees.indexOf(cahlan), 1);
+// console.log(devMountainEmployees);
 
-
-
+function userLoop() {
+    for (var i = 0; i < devMountainEmployees.length; i++) {
+        if (devMountainEmployees[i].name === 'Cahlan') {
+            devMountainEmployees.splice(i, 1);
+        }
+    }
+    return devMountainEmployees.length;
+}
+userLoop();
 
 //NEXT PROBLEM
 
